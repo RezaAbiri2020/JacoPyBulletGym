@@ -63,7 +63,7 @@ class JacoEnv(gym.Env):
         
         # assuming a target location for reaching in space with these positions in xyz
         target = [0.65, 0, 0.5]
-        if abs(state_robot[0]-target[0])<0.05 and abs(state_robot[1]-target[1])<0.05 and abs(state_robot[2]-target[2])<0.05:
+        if abs(state_robot[0]-target[0])<0.09 and abs(state_robot[1]-target[1])<0.09 and abs(state_robot[2]-target[2])<0.09:
             reward = 1
             done = True
         else:
@@ -88,7 +88,7 @@ class JacoEnv(gym.Env):
 
         # for fixed values 
         #rest_poses = [math.pi/1., math.pi/1., math.pi/1., math.pi/1., math.pi/1., math.pi/1., math.pi/1.]
-        self.jacoUid = p.loadURDF(os.path.join(urdfRootPath,"jaco/j2n6s300.urdf"), useFixedBase=True)
+        self.jacoUid = p.loadURDF(os.path.join(urdfRootPath,"jaco/j2n6s300_color.urdf"), useFixedBase=True)
         
         # start with a random initial positions
         for i in range(6):
