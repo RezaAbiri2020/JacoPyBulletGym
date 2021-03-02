@@ -52,7 +52,7 @@ class JacoEnv(gym.Env):
 
         # jointposes will be the values of all 7 joints and 3 fingers
         # move the robot a little bit
-        p.setJointMotorControlArray(self.jacoUid, [1, 2, 3, 4, 5, 6, 7, 9, 11, 13], p.POSITION_CONTROL, list(jointPoses))
+        p.setJointMotorControlArray(self.jacoUid, [ 2, 3, 4, 5, 6, 7, 9, 11, 13], p.POSITION_CONTROL, list(jointPoses))
 
         p.stepSimulation()
 
@@ -88,10 +88,10 @@ class JacoEnv(gym.Env):
 
         # for fixed values 
         #rest_poses = [math.pi/1., math.pi/1., math.pi/1., math.pi/1., math.pi/1., math.pi/1., math.pi/1.]
-        self.jacoUid = p.loadURDF(os.path.join(urdfRootPath,"jaco/j2s7s300_gym.urdf"), useFixedBase=True)
+        self.jacoUid = p.loadURDF(os.path.join(urdfRootPath,"jaco/j2n6s300.urdf"), useFixedBase=True)
         
         # start with a random initial positions
-        for i in range(7):
+        for i in range(6):
             p.resetJointState(self.jacoUid,i, random.uniform(1,3))
 
         tableUid = p.loadURDF(os.path.join(urdfRootPath, "table/table.urdf"),basePosition=[0.5,0,-0.65])
